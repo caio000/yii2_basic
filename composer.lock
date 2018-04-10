@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "11dc19ae1bd8fd0737fec254fc20f7de",
+    "content-hash": "661c98284f9434ab43080e69424048b7",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -68,6 +68,25 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/materialize",
+            "version": "v0.100.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dogfalo/materialize.git",
+                "reference": "72f2e944b9a600b8df49dcd0e2e404c48689aae8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dogfalo/materialize/zipball/72f2e944b9a600b8df49dcd0e2e404c48689aae8",
+                "reference": "72f2e944b9a600b8df49dcd0e2e404c48689aae8",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=3.0.0,<4.0.0|>=2.1.4,<3.0.0"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/punycode",
@@ -213,6 +232,52 @@
                 "html"
             ],
             "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
+            "name": "macgyer/yii2-materializecss",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MacGyer/yii2-materializecss.git",
+                "reference": "96616f47de98b89f682647a1a00c6687dbb79ca0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MacGyer/yii2-materializecss/zipball/96616f47de98b89f682647a1a00c6687dbb79ca0",
+                "reference": "96616f47de98b89f682647a1a00c6687dbb79ca0",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/materialize": "0.100.1",
+                "php": ">=5.6.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "macgyer\\yii2materializecss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Erdmann",
+                    "homepage": "http://www.medienpol.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Materialize CSS implementation for Yii2",
+            "homepage": "http://macgyer.github.io/yii2-materializecss",
+            "keywords": [
+                "material design",
+                "materialize",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2018-03-25T09:43:37+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
