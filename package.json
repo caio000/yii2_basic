@@ -1,0 +1,25 @@
+{
+  "name": "yii2_basic",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">     <a href=\"https://github.com/yiisoft\" target=\"_blank\">         <img src=\"https://avatars0.githubusercontent.com/u/993323\" height=\"100px\">     </a>     <h1 align=\"center\">Yii 2 Basic Project Template</h1>     <br> </p>",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caio000/yii2_basic.git"
+  },
+  "author": "caio de freitas adriano <caiof.adriano@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caio000/yii2_basic/issues"
+  },
+  "homepage": "https://github.com/caio000/yii2_basic#readme",
+  "dependencies": {
+    "materialize-css": "^1.0.0-beta"
+  }
+}
