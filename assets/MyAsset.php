@@ -19,8 +19,7 @@ class MyAsset extends AssetBundle
   ];
 
   public $depends = [
-    'yii\web\YiiAsset',
-    'macgyer\yii2materializecss\assets\MaterializeAsset',
+    'app\assets\MaterializeJsAsset'
   ];
 }
 
