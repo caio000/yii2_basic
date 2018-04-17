@@ -21,8 +21,14 @@ class UsuarioController extends Controller
     $usuario = new Usuario();
 
     if ($usuario->load(Yii::$app->request->post()) && $usuario->validate()) {
-      $usuario->senha = Yii::$app->getSecurity()->generatePasswordHash($usuario->senha);
-      $usuario->save();
+
+      try {
+        $usuario->senha = Yii::$app->getSecurity()->generatePasswordHash($usuario->senha);
+        $usuario->save();
+        Yii::$app->session->setFlash('success','Usuário cadastrado com sucesso!');
+      } catch (\Exception $e) {
+        Yii::$app->session->setFlash('danger','Ocorreu um erro ao cadastrar o usuário!');
+      }
     }
 
     return $this->render('teste',compact('usuario'));
