@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use app\assets\MyAsset;
+use app\widgets\MyAlert;
 
 MyAsset::register($this);
 ?>
@@ -17,7 +18,7 @@ MyAsset::register($this);
     <?php $this->beginBody() ?>
 
     <header>
-      <nav>
+      <nav class="grey darken-4">
         <div class="nav-wrapper">
           <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
           <ul class="right hide-on-med-and-down">
@@ -29,10 +30,11 @@ MyAsset::register($this);
     </header>
 
     <main>
+      <?= MyAlert::widget() ?>
       <?= $content ?>
     </main>
 
-    <footer class="page-footer">
+    <footer class="page-footer grey darken-4">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
