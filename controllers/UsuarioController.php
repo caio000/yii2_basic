@@ -17,6 +17,18 @@ class UsuarioController extends Controller
 
   public function actionIndex()
   {
+    $usuarios = new Usuario();
+    $usuarios = $usuarios->find()->all();
+    return $this->render('index',compact('usuarios'));
+  }
+
+  public function actionUpdate($id)
+  {
+    echo "teste";
+  }
+
+  public function actionCadastrar()
+  {
 
     $usuario = new Usuario();
 

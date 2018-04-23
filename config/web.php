@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'usuario',
+    'defaultRoute' => 'usuario/index',
     'language'=>'pt-BR',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -49,6 +49,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+              'usuario/editar/<id:\[0-9]>'=>'usuario/update'
             ],
         ],
     ],
