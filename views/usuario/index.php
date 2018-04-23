@@ -19,7 +19,7 @@ use yii\helpers\Url;
             <td><?= ucwords($usuario->nome) ?></td>
             <td><?= ucwords($usuario->sobrenome) ?></td>
             <td><?= $usuario->email ?></td>
-            <td><a href="<?= Url::to('usuario/editar',['id'=>$usuario->id]) ?>"><i class="material-icons">edit</i></a></td>
+            <td><a href="<?= Url::toRoute(['usuario/update','id'=>$usuario->id]) ?>"><i class="material-icons">edit</i></a></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

@@ -20,7 +20,7 @@
   </div>
 
   <div class="row">
-    <?= SubmitButton::widget(['label'=>'cadastrar','options'=>['class'=>'red']]) ?>
+    <?= SubmitButton::widget(['label'=>$btnLabel,'options'=>['class'=>'red']]) ?>
   </div>
 
   <?php ActiveForm::end() ?>

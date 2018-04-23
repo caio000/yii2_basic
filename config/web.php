@@ -49,7 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-              'usuario/editar/<id:\[0-9]>'=>'usuario/update'
+              'usuario/cadastrar'=>'usuario/registrate',
+              'usuario/editar/<id>'=>'usuario/update',
             ],
         ],
     ],

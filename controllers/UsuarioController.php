@@ -24,26 +24,36 @@ class UsuarioController extends Controller
 
   public function actionUpdate($id)
   {
-    echo "teste";
+    return $this->actionRegistrate($id);
   }
 
-  public function actionCadastrar()
+  public function actionRegistrate($id = NULL)
   {
 
-    $usuario = new Usuario();
+    if ($id) {
+      $usuario = Usuario::findOne($id);
+      $successMessage = "Dados atualizados com sucesso!";
+      $dangerMessage = "Ocorreu um erro ao atualizar os dados<br>Tente novamente mais tarde!";
+      $btnLabel = 'Editar';
+    } else {
+      $usuario = new Usuario();
+      $successMessage = "Usuário cadastrado com sucesso!";
+      $dangerMessage = "Ocorreu um erro ao cadastrar o usuário<br>Tente novamente mais tarde!";
+      $btnLabel = 'Cadastrar';
+    }
 
     if ($usuario->load(Yii::$app->request->post()) && $usuario->validate()) {
 
       try {
         $usuario->senha = Yii::$app->getSecurity()->generatePasswordHash($usuario->senha);
         $usuario->save();
-        Yii::$app->session->setFlash('success','Usuário cadastrado com sucesso!');
+        Yii::$app->session->setFlash('success',$successMessage);
       } catch (\Exception $e) {
-        Yii::$app->session->setFlash('danger','Ocorreu um erro ao cadastrar o usuário!');
+        Yii::$app->session->setFlash('danger',$dangerMessage);
       }
     }
 
-    return $this->render('teste',compact('usuario'));
+    return $this->render('teste',compact('usuario','btnLabel'));
   }
 
 }
