@@ -20,6 +20,7 @@ class m180417_130318_create_categoria extends Migration
 
       $this->insert('categorias',[
         'nome'=>'eletronicos',
+        'data_cadastro'=>date('Y-m-d h:i:s')
       ]);
     }
 
