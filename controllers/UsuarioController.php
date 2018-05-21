@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\Usuario;
+use app\models\Usuarios;
 
 /**
  *
@@ -17,7 +17,7 @@ class UsuarioController extends Controller
 
   public function actionIndex()
   {
-    $usuarios = new Usuario();
+    $usuarios = new Usuarios();
     $usuarios = $usuarios->find()->all();
     return $this->render('index',compact('usuarios'));
   }
@@ -31,12 +31,12 @@ class UsuarioController extends Controller
   {
 
     if ($id) {
-      $usuario = Usuario::findOne($id);
+      $usuario = Usuarios::findOne($id);
       $successMessage = "Dados atualizados com sucesso!";
       $dangerMessage = "Ocorreu um erro ao atualizar os dados<br>Tente novamente mais tarde!";
       $btnLabel = 'Editar';
     } else {
-      $usuario = new Usuario();
+      $usuario = new Usuarios();
       $successMessage = "Usuário cadastrado com sucesso!";
       $dangerMessage = "Ocorreu um erro ao cadastrar o usuário<br>Tente novamente mais tarde!";
       $btnLabel = 'Cadastrar';

@@ -21,7 +21,7 @@ MyAsset::register($this);
     <header>
       <nav class="grey darken-4">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+          <a href="<?= Url::home() ?>" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="<?= Url::toRoute('usuario/cadastrar') ?>"><i class="material-icons">person_add</i></a></li>
             <li><a href="<?= Url::toRoute('usuario/index') ?>"><i class="material-icons">people</i></a></li>
