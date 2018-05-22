@@ -22,8 +22,12 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\Usuarios',
+            'loginUrl' => ['usuario/login'],
             'enableAutoLogin' => true,
+        ],
+        'authManager' => [
+          'class' => 'yii\rbac\PhpManager',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -51,6 +55,7 @@ $config = [
             'rules' => [
               'usuario/cadastrar'=>'usuario/registrate',
               'usuario/editar/<id>'=>'usuario/update',
+              'usuario/sair'=>'usuario/logout'
             ],
         ],
     ],

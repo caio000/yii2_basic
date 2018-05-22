@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use app\models\Usuarios;
+use app\models\MyFormLogin;
+use yii\filters\AccessControl;
 
 /**
  *
@@ -14,6 +16,30 @@ class UsuarioController extends Controller
 
   public $layout = 'MyLayout';
   public $defaultAction = 'index';
+
+  ##############################################################################
+  public function behaviors()
+  {
+    return [
+      'access' => [
+        'class' => AccessControl::className(),
+        'only'=> ['login','index','registrate','update','logout'],
+        'rules' => [
+          [
+            'allow' => true,
+            'actions'=> ['login'],
+            'roles' => ['?']
+          ],
+          [
+            'allow'   => true,
+            'actions' => ['index','registrate','update','logout'],
+            'roles'   => ['@']
+          ]
+        ],
+      ]
+    ];
+  }
+  ##############################################################################
 
   public function actionIndex()
   {
@@ -54,6 +80,26 @@ class UsuarioController extends Controller
     }
 
     return $this->render('teste',compact('usuario','btnLabel'));
+  }
+
+  public function actionLogin()
+  {
+    if (!Yii::$app->user->isGuest) return $this->goHome();
+
+    $modal = new MyFormLogin();
+
+    if ($modal->load(Yii::$app->request->post()) && $modal->login()) {
+      return $this->goHome();
+    } else {
+      if (!$modal->isValid) Yii::$app->session->setFlash('danger','Email ou senha incorretos');
+      return $this->render('login',compact('modal'));
+    }
+  }
+
+  public function actionLogout()
+  {
+    Yii::$app->user->logout();
+    $this->goHome();
   }
 
 }
