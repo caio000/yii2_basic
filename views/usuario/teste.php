@@ -1,6 +1,7 @@
 <?php
   use macgyer\yii2materializecss\widgets\form\ActiveForm;
   use macgyer\yii2materializecss\widgets\form\SubmitButton;
+  use macgyer\yii2materializecss\widgets\form\Select;
 ?>
 
 <div class="row">
@@ -17,6 +18,20 @@
 
   <div class="row">
     <?= $form->field($usuario,'senha',['options'=>['class'=>'input-field col s12']])->passwordInput() ?>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <?= Select::widget([
+        'name'=>'slctTipoUsuario',
+        'items'=>[
+          '' => 'Selecione um tipo de usuário',
+          'administrador'=>'Administrador',
+          'supervisor'=>'Supervisor',
+          'operador' => 'Operador'
+        ]
+      ]) ?>
+    </div>
   </div>
 
   <div class="row">

@@ -56,6 +56,11 @@ class UsuarioController extends Controller
   public function actionRegistrate($id = NULL)
   {
 
+    if (!Yii::$app->user->can('createPost')) {
+      Yii::$app->session->setFlash('warning','Você não tem permissão');
+      return $this->goBack();
+    }
+
     if ($id) {
       $usuario = Usuarios::findOne($id);
       $successMessage = "Dados atualizados com sucesso!";
@@ -73,7 +78,15 @@ class UsuarioController extends Controller
       try {
         $usuario->senha = Yii::$app->getSecurity()->generatePasswordHash($usuario->senha);
         $usuario->save();
+
+        $post = Yii::$app->request->post();
+        $auth = Yii::$app->authManager;
+
+        $role = $auth->getRole($post['slctTipoUsuario']);
+        $auth->assign($role,$usuario->id);
+
         Yii::$app->session->setFlash('success',$successMessage);
+        return $this->goBack();
       } catch (\Exception $e) {
         Yii::$app->session->setFlash('danger',$dangerMessage);
       }
