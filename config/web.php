@@ -9,6 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'defaultRoute' => 'usuario/index',
     'language'=>'pt-BR',
+    'timeZone'=>'America/Sao_Paulo',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
