@@ -51,8 +51,6 @@ class RbacController extends Controller
     $auth->addChild($operador,$view);
 
     $auth->assign($administrador,1);
-    $auth->assign($supervisor,2);
-    $auth->assign($operador,3);
 
     echo 'Permissoões criadas!\n';
     return ExitCode::OK;
