@@ -21,17 +21,11 @@
   </div>
 
   <div class="row">
-    <div class="input-field col s12">
-      <?= Select::widget([
-        'name'=>'slctTipoUsuario',
-        'items'=>[
-          '' => 'Selecione um tipo de usuário',
-          'administrador'=>'Administrador',
-          'supervisor'=>'Supervisor',
-          'operador' => 'Operador'
-        ]
-      ]) ?>
-    </div>
+    <?= $form->field($usuario,'tipo',['options'=>['class'=>'input-field col s12']])->dropDownList([
+      'administrador'=>'Administrador',
+      'supervisor'=>'Supervisor',
+      'operador' => 'Operador'
+    ],['options'=>[$usuario->getTipo() =>['selected'=>'selected']]]) ?>
   </div>
 
   <div class="row">

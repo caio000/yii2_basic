@@ -57,7 +57,7 @@ class UsuarioController extends Controller
   {
 
     if (!Yii::$app->user->can('createPost')) {
-      Yii::$app->session->setFlash('warning','Você não tem permissão');
+      Yii::$app->session->setFlash('warning','Você não tem permissão para acessar essa página');
       return $this->goBack();
     }
 
@@ -76,18 +76,25 @@ class UsuarioController extends Controller
     if ($usuario->load(Yii::$app->request->post()) && $usuario->validate()) {
 
       try {
+        // abre transaction
+        $connection = Yii::$app->db;
+        $transaction = $connection->beginTransaction();
+
         $usuario->senha = Yii::$app->getSecurity()->generatePasswordHash($usuario->senha);
         $usuario->save();
 
-        $post = Yii::$app->request->post();
         $auth = Yii::$app->authManager;
 
-        $role = $auth->getRole($post['slctTipoUsuario']);
+        $role = $auth->getRole($usuario->tipo);
+        $auth->revokeAll($usuario->id);
         $auth->assign($role,$usuario->id);
 
+        $transaction->commit();
         Yii::$app->session->setFlash('success',$successMessage);
         return $this->goBack();
       } catch (\Exception $e) {
+        $transaction->rollback();
+        $dangerMessage .= "<br>".$e->getMessage();
         Yii::$app->session->setFlash('danger',$dangerMessage);
       }
     }

@@ -2,8 +2,11 @@
 
 namespace app\models;
 
+use Yii;
+use yii\db\Expression;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\behaviors\TimestampBehavior;
 
 /**
  *
@@ -11,10 +14,24 @@ use yii\web\IdentityInterface;
 class Usuarios extends ActiveRecord implements IdentityInterface
 {
 
+  public $tipo;
+
+  public function behaviors()
+  {
+    return [
+      'timestamp' => [
+        'class' => TimestampBehavior::className(),
+        'createdAtAttribute' => 'create_at',
+        'updatedAtAttribute' => 'update_at',
+        'value' => new Expression('NOW()'),
+      ],
+    ];
+  }
+
   public function rules()
   {
     return [
-      [['nome','sobrenome','email','senha'],'required'],
+      [['nome','sobrenome','email','senha','tipo'],'required'],
       ['email','email'],
     ];
   }
@@ -43,9 +60,16 @@ class Usuarios extends ActiveRecord implements IdentityInterface
   {
     return $this->getPrimaryKey();
   }
-	
+
   public function findByEmail ($email) {
     return static::findOne(['email'=>$email]);
+  }
+
+  public function getTipo()
+  {
+    $auth = Yii::$app->authManager;
+    foreach ($auth->getAssignments($this->id) as $role)
+      return $role->roleName;
   }
 }
 
