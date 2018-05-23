@@ -55,6 +55,13 @@ class RbacController extends Controller
     echo 'Permissoões criadas!\n';
     return ExitCode::OK;
   }
+
+  public function actionRevokeAllRoles(int $userId)
+  {
+    $auth = Yii::$app->authManager;
+    $auth->revokeAll($userId);
+    print('__________________________________________________________________');
+  }
 }
 
 ?>
