@@ -37,6 +37,10 @@ if (!Yii::$app->user->isGuest) {
         'items' => [
           ['label' => '<i class="material-icons">people</i>', 'url' => ['usuario/index'],'options'=>['title'=>'Visualizar Usuários']],
           ['label' => '<i class="material-icons">person_add</i>', 'url' => ['usuario/cadastrar'],'options'=>['title'=>'Cadastrar Usuário']],
+          ['label' => 'Artistas','items'=>[
+            ['label'=>'Visualizar todos','url'=>['artista/index']],
+            ['label'=>'Novo','url'=>['artista/cadastrar'],'visible'=>Yii::$app->user->can('createArtist')],
+          ]],
           ['label' => ucwords($name),'items'=>[
             ['label'=>'Sair','url'=>['usuario/sair']]
           ],'visible'=> !Yii::$app->user->isGuest],

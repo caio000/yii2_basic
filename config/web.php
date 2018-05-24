@@ -56,7 +56,8 @@ $config = [
             'rules' => [
               'usuario/cadastrar'=>'usuario/registrate',
               'usuario/editar/<id>'=>'usuario/update',
-              'usuario/sair'=>'usuario/logout'
+              'usuario/sair'=>'usuario/logout',
+              'artista/cadastrar'=>'artist/create',
             ],
         ],
     ],
