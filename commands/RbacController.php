@@ -12,6 +12,8 @@ use yii\console\ExitCode;
 class RbacController extends Controller
 {
 
+  protected $auth;
+
   public function actionInit()
   {
     echo 'Criando regras de permissão......\n';
@@ -61,6 +63,24 @@ class RbacController extends Controller
     $auth = Yii::$app->authManager;
     $auth->revokeAll($userId);
     print('__________________________________________________________________');
+  }
+
+  public function actionCreatePermission(string $permissionName, array $roles)
+  {
+
+    $this->auth = Yii::$app->authManager;
+
+    // Cria a nova permissão
+    $permission = $this->auth->createPermission($permissionName);
+    $this->auth->add($permission);
+
+    // aplica a permissão para todos os tipos de usuários
+    foreach ($roles as $role) {
+      $role = $this->auth->getRole($role);
+      $this->auth->addChild($role,$permission);
+    }
+
+    return ExitCode::OK;
   }
 }
 
