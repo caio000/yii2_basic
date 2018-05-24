@@ -4,7 +4,7 @@
 ?>
 
 <div class="row">
-  <?php $form = ActiveForm::begin(['options'=>['class'=>'col s6 offset-s3']]);  ?>
+  <?php $form = ActiveForm::begin(['options'=>['class'=>'col s12 m6 offset-m3']]);  ?>
 
   <div class="row">
     <?= $form->field($modal,'email',['options'=>['class'=>'input-field col s12']]) ?>

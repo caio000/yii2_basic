@@ -3,8 +3,16 @@ use yii\helpers\Html;
 use app\assets\MyAsset;
 use app\widgets\MyAlert;
 use yii\helpers\Url;
+use macgyer\yii2materializecss\widgets\navigation\NavBar;
+use macgyer\yii2materializecss\widgets\navigation\Nav;
 
 MyAsset::register($this);
+$name = '';
+if (!Yii::$app->user->isGuest) {
+  $name = Yii::$app->user->identity->nome;
+  $name.= ' ';
+  $name.= Yii::$app->user->identity->sobrenome;
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,18 +27,23 @@ MyAsset::register($this);
     <?php $this->beginBody() ?>
 
     <header>
-      <nav class="grey darken-4">
-        <div class="nav-wrapper">
-          <a href="<?= Url::home() ?>" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <?php if (!YiI::$app->user->isGuest) : ?>
-              <li><a href="<?= Url::toRoute('usuario/cadastrar') ?>"><i class="material-icons">person_add</i></a></li>
-              <li><a href="<?= Url::toRoute('usuario/index') ?>"><i class="material-icons">people</i></a></li>
-              <li><a href="<?= Url::toRoute('usuario/sair') ?>">Sair</a></li>
-            <?php endif ?>
-          </ul>
-        </div>
-      </nav>
+      <?php
+      NavBar::begin(['brandLabel' => '<i class="material-icons">cloud</i>Logo','options'=>['class'=>'grey darken-4'],'brandOptions'=>['class'=>'left']]);
+      echo Nav::widget([
+        'renderSideNav'=>false,
+        'options'=>[
+          'class'=>'right hide-on-med-and-down'
+        ],
+        'items' => [
+          ['label' => '<i class="material-icons">people</i>', 'url' => ['usuario/index'],'options'=>['title'=>'Visualizar Usuários']],
+          ['label' => '<i class="material-icons">person_add</i>', 'url' => ['usuario/cadastrar'],'options'=>['title'=>'Cadastrar Usuário']],
+          ['label' => ucwords($name),'items'=>[
+            ['label'=>'Sair','url'=>['usuario/sair']]
+          ],'visible'=> !Yii::$app->user->isGuest],
+        ],'encodeLabels'=>false,
+      ]);
+      NavBar::end();
+      ?>
     </header>
 
     <main>
