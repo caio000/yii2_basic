@@ -57,6 +57,7 @@ $config = [
               'usuario/cadastrar'=>'usuario/registrate',
               'usuario/editar/<id>'=>'usuario/update',
               'usuario/sair'=>'usuario/logout',
+              'artista/index'=>'artist/index',
               'artista/cadastrar'=>'artist/create',
             ],
         ],

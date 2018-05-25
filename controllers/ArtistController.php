@@ -35,7 +35,11 @@ class ArtistController extends Controller
 
   public function actionIndex()
   {
-    // TODO: Lista os artistas cadastrados
+    if (!Yii::$app->user->can('viewArtist')) $this->goBack();
+
+    $artists = Artist::find()->all();
+
+    return $this->render('index',compact('artists'));
   }
 
   public function actionCreate()
