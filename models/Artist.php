@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\Albums;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -38,6 +39,11 @@ class Artist extends ActiveRecord
       ['name','string','max'=>100],
       ['description','string']
     ];
+  }
+
+  public function getAlbums()
+  {
+    return $this->hasMany(Albums::className(),['idArtist'=>'id']);
   }
 }
 
