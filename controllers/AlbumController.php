@@ -17,9 +17,16 @@ class AlbumController extends Controller
 
   public $layout = 'MyLayout';
 
-  public function actionIndex()
+  public function actionIndex($idArtist = null)
   {
-    // TODO: Criar página para mostrar os albums cadastrados
+    if (!Yii::$app->user->can('viewAllAlbums')) return $this->goBack();
+
+    if ($idArtist)
+      $albums = Albums::find()->where(['idArtist'=>$idArtist])->all();
+    else
+      $albums = Albums::find()->all();
+
+    return $this->render('index',compact('albums'));
   }
 
   public function actionCreate($idArtist)

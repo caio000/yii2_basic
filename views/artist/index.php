@@ -35,7 +35,7 @@ use macgyer\yii2materializecss\widgets\Button;
       <tbody>
         <?php foreach ($artists as $key => $artist): ?>
           <tr>
-            <td><?= $artist->name?></td>
+            <td><a href="<?= Url::toRoute(['album/index','idArtist'=>$artist->id])?>"><?= $artist->name?></a></td>
             <td><?= $artist->description?></td>
             <td>
               <?= Button::widget([

@@ -32,7 +32,7 @@ class Albums extends ActiveRecord
   {
     return [
       ['name','required'],
-      ['imgCover','file','extensions'=>'jpg, png'],
+      ['imgCover','file','extensions'=>'jpg, png, jpeg'],
       ['description','string'],
     ];
   }

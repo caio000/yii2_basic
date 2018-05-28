@@ -35,8 +35,8 @@ if (!Yii::$app->user->isGuest) {
           'class'=>'right hide-on-med-and-down'
         ],
         'items' => [
-          ['label' => '<i class="material-icons">people</i>', 'url' => ['usuario/index'],'options'=>['title'=>'Visualizar Usuários']],
-          ['label' => '<i class="material-icons">person_add</i>', 'url' => ['usuario/cadastrar'],'options'=>['title'=>'Cadastrar Usuário']],
+          ['label' => '<i class="material-icons">people</i>', 'url' => ['usuario/index'],'options'=>['title'=>'Visualizar Usuários'],'visible'=>!Yii::$app->user->isGuest],
+          ['label' => '<i class="material-icons">person_add</i>', 'url' => ['usuario/cadastrar'],'options'=>['title'=>'Cadastrar Usuário'],'visible'=>Yii::$app->user->can('createPost')],
           ['label' => 'Artistas','items'=>[
             ['label'=>'Visualizar todos','url'=>['artista/index'],'visible'=>Yii::$app->user->can('viewArtist')],
             ['label'=>'Novo','url'=>['artista/cadastrar'],'visible'=>Yii::$app->user->can('createArtist')],

@@ -60,6 +60,7 @@ $config = [
               'artista/index'=>'artist/index',
               'artista/cadastrar'=>'artist/create',
               'album/cadastrar/<idArtist>'=>'album/create',
+              'album/index/<idArtist>'=>'album/index',
             ],
         ],
     ],
