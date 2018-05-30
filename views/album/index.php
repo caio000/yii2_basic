@@ -1,5 +1,6 @@
 <?php
   use app\widgets\MyCard;
+  use yii\helpers\Url;
 ?>
 
 <div class="row">
@@ -14,6 +15,10 @@
         'image'=>Yii::getAlias('@web').'\\file\\'.$album->artist->name.'\\'.$album->name.'\\'.$album->cover,
         'title'=> $album->artist->name.' - '.$album->name,
         'description'=>$album->description,
+        'action'=>[
+          'text'=>'Ver músicas',
+          'url'=>Url::toRoute(['music/index','idAlbum'=>$album->id]),
+        ],
         'options'=>[
           'size'=>'s12 m4',
           'class'=>'grey darken-3 hoverable',

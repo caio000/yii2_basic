@@ -10,7 +10,7 @@
       </p>
     </div>
     <div class="card-action">
-      <a href="#">This is a link</a>
+      <a href="<?= $card->action['url']?>"><?= $card->action['text']?></a>
     </div>
   </div>
 </div>

@@ -12,6 +12,8 @@ return [
             'viewArtist',
             'createAlbum',
             'viewAllAlbums',
+            'createMusic',
+            'viewMusics',
         ],
     ],
     'supervisor' => [
@@ -23,6 +25,7 @@ return [
             'view',
             'viewArtist',
             'viewAllAlbums',
+            'viewMusics',
         ],
     ],
     'operador' => [
@@ -32,6 +35,7 @@ return [
             'view',
             'viewArtist',
             'viewAllAlbums',
+            'viewMusics',
         ],
     ],
     'createPost' => [
@@ -59,6 +63,12 @@ return [
         'type' => 2,
     ],
     'viewAllAlbums' => [
+        'type' => 2,
+    ],
+    'createMusic' => [
+        'type' => 2,
+    ],
+    'viewMusics' => [
         'type' => 2,
     ],
 ];

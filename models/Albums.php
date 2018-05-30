@@ -52,6 +52,11 @@ class Albums extends ActiveRecord
     return $this->hasOne(Artist::className(),['id'=>'idArtist']);
   }
 
+  public function getMusics()
+  {
+    return $this->hasMany(Musics::className(),['idAlbum'=>'id']);
+  }
+
 }
 
 ?>
