@@ -7,6 +7,7 @@ use yii\web\Controller;
 use app\models\Musics;
 use app\models\Albums;
 use yii\web\UploadedFile;
+use yii\helpers\Url;
 
 /**
  *
@@ -64,6 +65,25 @@ class MusicController extends Controller
     return $this->render('create',compact('music'));
 
     // TODO: Fazer o upload de uma nova musica
+  }
+
+  public function actionMusics_from_album($idAlbum)
+  {
+    $album = Albums::findOne($idAlbum);
+    $musics = [];
+
+    foreach ($album->musics as $key => $music) {
+      $temp = [
+        'name'    => $music->name,
+        'artist'  => $music->album->artist->name,
+        'album'   => $music->album->name,
+        'url'     => Url::to('@web/file/'.$album->artist->name.'/'.$album->name.'/'.$music->filename),
+        'cover_art_url' => Url::to('@web/file/'.$album->artist->name.'/'.$album->name.'/'.$album->cover),
+      ];
+
+      array_push($musics, $temp);
+    }
+    echo json_encode($musics);
   }
 
 }

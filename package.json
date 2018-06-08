@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/caio000/yii2_basic#readme",
   "dependencies": {
-    "materialize-css": "^1.0.0-beta"
+    "amplitudejs": "^3.2.3"
   }
 }
